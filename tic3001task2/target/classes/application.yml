@@ -1,0 +1,8 @@
+server:
+  port: 5599
+
+spring:
+  application:
+    name: example
+#  autoconfigure:
+#    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
