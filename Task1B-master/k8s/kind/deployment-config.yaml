@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
         - name: backend
-          image: nginx:latest
+          image: phoebehuyuanyuan/taskuse:latest
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 3000
           resources:
             limits:
               cpu: 40m
