@@ -1,0 +1,13 @@
+docker compose up -d
+
+ensure that services are running:
+docker-compose ps
+
+create a topic:
+docker exec 81467f769f8a6560ea24ef47da5a4d8a4eed4009b3a7488942b5a778d5f60095 kafka-topics --create --topic my-topic --partitions 3 --replication-factor 3 --if-not-exists --zookeeper zookeeper-1:14181,zookeeper-2:14181,zookeeper-3:14181
+
+create a consumer:
+docker-compose exec kafka-1 kafka-console-consumer --bootstrap-server kafka-1:20092,kafka-2:30092,kafka-3:40092 --topic test-topic --from-beginning
+
+open another window:
+docker-compose exec kafka-1 bash -c "seq 5 | kafka-console-producer --broker-list kafka-1:20092,kafka-2:30092,kafka-3:40092 --topic test-topic && echo 'Produced 5 messages.'"
